@@ -1,0 +1,359 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Ingreso de solicitudes";
+}
+<script src="~/js/RegistroSolicitudTramites.js"></script>
+<script type="text/javascript">
+    var xidPersona = '@ViewData["IDPERSONA"]';
+    var xidTramite = '@ViewData["IDTRAMITE"]';
+    var xidTramiteOpcion = '@ViewData["IDTRAMITEOPCION"]';
+    var xidSolicitud = '@ViewData["IDSOLICITUDTRAMITE"]';
+</script>
+<style>
+    .k-stepper .k-step-indicator {
+        width: 78px;
+        height: 78px;
+        /*font-family: sans-serif;*/
+        font-size: large;
+    }
+
+    .k-icon-32 {
+        font-size: 32px; /* Sets icon size to 32px */
+    }
+
+    .k-icon-48 {
+        font-size: 48px; /* Sets icon size to 48px */
+    }
+
+    .k-icon-64 {
+        font-size: 64px; /* Sets icon size to 64px */
+    }
+</style>
+<link href="~/css/StyleMP.css" rel="stylesheet" />
+<form id="frmRegistroSolicitud" method="POST" enctype="multipart/form-data" autocomplete="off">
+    <div class="col-lg-12">
+        <div class="card_Mdf">
+            <div class="row g-3">
+                <nav id="step_Registro_sol" class="step_Registro_sol"></nav>
+            </div>
+            <div class="container">
+                <div class="row g-3" id="step0" style="display:flex;">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        <br />
+                        <div class="row g-3">
+                            <div class="col-lg-4">
+                                <label for="txtNumTramite" class="form-label">No Tramite</label>
+                                <input type="text" style="width: 100%;" id="txtNumTramite" name="txtNumTramite" />
+                            </div>
+                            <div class="col-lg-8">
+                                <label for="cmbTipoTramite" class="form-label">Seleccione tipo de tramite</label>
+                                <input id="cmbTipoTramite" name="cmbTipoTramite" style="width: 100%;" />
+                            </div>
+
+                            <div class="col-lg-12">
+                                <br />
+
+                                <div class="row g-3" id="peVista" style="display:none;">
+                                    <div class="col-lg-12"> @await Html.PartialAsync("_ExamenesDatosComple")</div>
+                                </div>
+                                <div class="row g-3" id="pnVista" style="display:none;">
+                                    <div class="col-lg-12">@await Html.PartialAsync("_LicenciasDatosComple")</div>
+
+                                </div>
+                                <div class="row g-3" id="pjVista" style="display:none;">
+                                    <div class="col-lg-12">@await Html.PartialAsync("_MatriculasDatosComple")</div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-6"></div>
+                            <div class="col-lg-6 k-rtl">
+                                <button id="btnStep0Next" type="button">Continuar</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+                <div class="row g-3" id="step1" style="display:none;">
+
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br />
+                        <div class="row g-3">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-8"></div>
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-7">
+                                <div id="GridDocumentos"></div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div id="GridArchivos"></div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="row g-3">
+                                    <div class="col-lg-6">
+                                        <button id="btnStep1Prev" type="button">Volver</button>
+                                    </div>
+                                    <div class="col-lg-6 k-rtl">
+                                        <button id="btnStep1Next" type="button">Continuar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+                <div class="row g-3" id="step2" style="display:none;">
+
+
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <br />
+                        <div class="row g-3">
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4">
+                                <label for="cmb_Oficinas" class="form-label">Seleccio una oficina</label>
+                                <input type="text" style="width: 100%;" id="cmb_Oficinas" name="cmb_Oficinas" />
+                            </div>
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4">
+                                <label for="txt_Fechacita" class="form-label">Fecha Cita</label>
+                                <input type="text" style="width: 100%;" id="txt_Fechacita" name="txt_Fechacita" />
+                            </div>
+                            <div class="col-lg-4"></div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <button id="btnStep2Prev" type="button">Volver</button>
+                            </div>
+                            <div class="col-lg-6 k-rtl">
+                                <button id="btnStep2Next" type="button">Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+
+                </div>
+                <div class="row g-3" id="step3" style="display:none;">
+                    <div class="page-inner">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-10 col-xl-9">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="page-pretitle">
+                                            Mandamiento de Pago
+                                        </h6>
+                                        <h4 class="page-title">No #0000012</h4>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a href="#" class="btn btn-light btn-border">
+                                            Descargar
+                                        </a>
+                                        <a href="#" class="btn btn-primary ml-2">
+                                            Imprimir
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="page-divider"></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-invoice">
+                                            <div class="card-header">
+                                                <div class="invoice-header">
+                                                    <h3 class="invoice-title">
+                                                        Mandamiento de Pago
+                                                    </h3>
+                                                    <div class="invoice-logo">
+                                                        @*<img src="" alt="company logo">*@
+                                                        <img src="~/Images/MicrosoftTeams-image.png" width="20%" height="20%" />
+                                                    </div>
+                                                </div>
+                                                <div class="invoice-desc">
+                                                    Estado Mayor, Alameda Manuel Enrique Araujo,<br /> San Salvador
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="separator-solid"></div>
+                                                <div class="row">
+                                                    <div class="col-md-4 info-invoice">
+                                                        <h5 class="sub">Fecha</h5>
+                                                        <p>03/12/2021 03:00 pm</p>
+                                                    </div>
+                                                    <div class="col-md-4 info-invoice">
+                                                        <h5 class="sub">No:</h5>
+                                                        <p>#0000012</p>
+                                                    </div>
+                                                    <div class="col-md-4 info-invoice">
+                                                        <h5 class="sub">Facturar a</h5>
+                                                        <p>
+                                                            William Lopez, Residencial Los Almendros<br>Pol #2, casa #199
+                                                        </p>
+                                                        <p>
+                                                            No DUI:00253609-8
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="invoice-detail">
+                                                            <div class="invoice-top">
+                                                                <h3 class="title"><strong>Resumen de Servicios</strong></h3>
+                                                            </div>
+                                                            <div class="invoice-item">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td><strong>Servicios</strong></td>
+                                                                                <td class="text-center"><strong>Cantidad</strong></td>
+                                                                                <td class="text-center"><strong>Precio</strong></td>
+                                                                                <td class="text-right"><strong>Total</strong></td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Portación de arma de fuego</td>
+                                                                                <td class="text-center">$10.00</td>
+                                                                                <td class="text-center">1</td>
+                                                                                <td class="text-right">$10.00</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Primera vez</td>
+                                                                                <td class="text-center">$10.00</td>
+                                                                                <td class="text-center">1</td>
+                                                                                <td class="text-right">$10.00</td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td class="text-center"><strong>Subtotal</strong></td>
+                                                                                <td class="text-right">$20.00</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td class="text-center"><strong>Iva</strong></td>
+                                                                                <td class="text-right">$0</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                                <td class="text-center"><strong>Total</strong></td>
+                                                                                <td class="text-right">$20.00</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="separator-solid  mb-3"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="row">
+                                                    <div class="col-sm-7 col-md-5 mb-3 mb-md-0 transfer-to">
+                                                        <h5 class="sub">Transferencia bancaria</h5>
+                                                        <div class="account-transfer">
+                                                            <div><span>Nombre de la cuenta:</span><span>Ministerio de defensa</span></div>
+                                                            <div><span>Número de cuenta:</span><span>1234567890934</span></div>
+                                                            <div><span>Código:</span><span>BARC0032UK</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5 col-md-7 transfer-total">
+                                                        <h5 class="sub">Cantidad total</h5>
+                                                        <div class="price">$20.00</div>
+                                                        <span>Iva Incluido</span>
+                                                    </div>
+                                                </div>
+                                                <div class="separator-solid"></div>
+                                                <h6 class="text-uppercase mt-4 mb-3 fw-bold">
+                                                    Notas
+                                                </h6>
+                                                <p class="text-muted mb-0">
+                                                    si hay algo más que podamos hacer, ¡háganoslo saber! Además, si necesita que agreguemos el IVA o cualquier otra cosa a este pedido, es muy fácil ya que se trata de una plantilla, ¡así que pregunte!
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <button id="btnStep3Prev" type="button">Volver</button>
+                            </div>
+                            <div class="col-lg-6 k-rtl">
+                                <button id="btnConfirmar" type="button">Finalizar Tramite</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                @*@await Html.PartialAsync("_RegistroValidPreguntasSeguridad")
+                    @await Html.PartialAsync("_ConfirmarValidDatosComple")*@
+            </div>
+        </div>
+    </div>
+</form>
+
+@*modal indica tramites pendientes*@
+<div id="dialogPending"></div>
+
+@*modal indica tramites pasan a validacion de documentos*@
+<div id="dialogValidacion"></div>
+
+@*modal mensaje*@
+<div class="modal fade" id="ModalMsgSol" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalMsgSolLabel">New message</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseMsg"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MshSolbody">
+                    <div class="row g-3">
+                        <div class="col-lg-4 text-center">
+                            <i class="k-icon k-i-check" style="font-size:100px;"></i>
+                        </div>
+                        <div class="col-lg-8">
+                            <h4></h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+@*modal caraga de archivos*@
+<div id="modalSubirDoc">
+    <div class="row g-3">
+        <div class="col-lg-12">
+            <div class="k-content k-rtl">
+                <input id="Adjunto" name="files" type="file" />
+            </div>
+        </div>
+    </div>
+</div>

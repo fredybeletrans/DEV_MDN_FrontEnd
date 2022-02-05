@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Aprobación Documentos";
+}
+<script src="~/js/AprobacionDocumentos.js"></script>
+<link href="~/css/viewer.min.css" rel="stylesheet" />
+<script src="~/js/viewer.min.js"></script>
+
+<div class="col-lg-12">
+
+    <div class="card_Mdf">
+        <div class="row g-3">
+            <div id="TramiteNombre" class="col-lg-12" style="text-align: center;"><h3><strong>Aprobación de Documentos</strong></h3></div>
+        </div>
+        <br/>
+
+
+        <div class="row g-3">
+            @*<div class="col-lg-3">
+                <div class="row g-3">
+                    <div class="col-lg-4">
+                        <label for="dFechaDesde">Fecha Desde:</label>
+                        <input id="dFechaDesde" name="dFechaDesde" style="width: 100%;" />
+                    </div>
+                    <div class=" col-lg-4">
+                        <label for="dFechaHasta">Fecha Hasta:</label>
+                        <input id="dFechaHasta" name="dFechaHasta" style="width: 100%;" />
+                    </div>
+                    <div class="col-lg-4 align-self-end">
+                        <input type="checkbox" id="chkRangFechas" name="chkRangFechas" class="k-checkbox">
+                        <label class="k-checkbox-label" for="chkRangFechas" id="lblchkRangFechas">Por Fechas</label>
+                    </div>
+                </div>
+            </div>*@
+            <div class="col-lg-3">
+                <label for="CmbTramite">Tramite:</label>
+                <input id="CmbTramite" name="CmbTramite" type="text" style="width: 100%;" />
+            </div>
+            <div class="col-lg-3">
+                <label for="cmbOpciones">Opciones:</label>
+                <input id="cmbOpciones" name="cmbOpciones" type="text" style="width: 100%;" />
+            </div>
+        
+
+        </div>
+
+        <br />
+        <div class="row g-3">
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-lg-12">
+                        <label for="gTramitesSinAprobacion" class="form-label"><strong>Lista de Trámites</strong></label>
+                        <div id="gTramitesSinAprobacion"></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-lg-12" style=" text-align-last: center;height:265px;">
+                        <label for="divdoc" class="form-label"><strong>Documentos Recibidos</strong></label>
+                        <div id="divdoc">
+                            @*<img src="/css/Images/img1.jpg" id="imag2" />*@
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12"><br /></div>
+                    <div class="col-lg-12">
+                        <div id="gTramitesSinAprobDocumento"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="vModalCambioEstado"> @*espacio para la vista cambio de estado*@</div>

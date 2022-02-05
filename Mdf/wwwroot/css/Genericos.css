@@ -1,0 +1,104 @@
+﻿#div_Ocultar {
+    display:none;
+}
+
+.card_Mdf {
+    transition: 0.3s;
+    width: 100%;
+    padding: 50px 15px 50px 15px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-bottom: 80px;
+    -webkit-box-shadow: 0 1px 15px 1px rgb(69 65 78 / 8%);
+    -moz-box-shadow: 0 1px 15px 1px rgba(69,65,78,.08);
+    box-shadow: 0 1px 15px 1px rgb(69 65 78 / 8%);
+    border: 0;
+}
+
+    .card_Mdf:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+.container {
+    padding: 2px 16px;
+}
+
+.step_Registro {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-left:10px;
+    margin-right:10px
+}
+/* Notifications */
+.k-notification h3 {
+    padding: 30px 10px 5px;
+    font-size: 1em;
+    line-height: normal;
+}
+
+.k-notification img {
+    margin: 20px;
+    float: left;
+}
+
+
+/* email template */
+.noti-mail {
+    width: 300px;
+    height: 100px;
+}
+
+/* Error template */
+noti-error {
+    width: 300px;
+    height: 100px;
+}
+
+/* Success template */
+.noti-success {
+    width: 300px;
+    height: 100px;
+}
+
+
+.k-bootstrap-v4 .k-notification h3 {
+    padding: 10px 10px 5px;
+}
+
+.k-bootstrap-v4 .k-notification img {
+    margin: 10px 20px 0 0;
+}
+
+.k-bootstrap-v4 .noti-mail,
+.k-bootstrap-v4 .noti-error,
+.k-bootstrap-v4 .noti-success {
+    width: calc( 300px - 2.5rem );
+    height: calc( 100px - 1.5rem );
+}
+
+
+/* For Material v2 theme */
+.k-notification h3 {
+    padding: 10px 10px 5px;
+}
+
+.k-notification img {
+    margin: 10px 20px 0 0;
+}
+
+.noti-mail,
+ noti-error,
+ .noti-success {
+    width: 270px;
+    height: 70px;
+}
+
+
+.Mdf-bg-color {
+    --bs-bg-opacity: 1;
+    background-color: #3c4557;
+}
+
+.Mdf-navbar-white {
+    color: white;
+}

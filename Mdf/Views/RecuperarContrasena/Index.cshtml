@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Recuperación de Contraseña";
+}
+<script src="~/js/RecuperarContrasena.js"></script>
+
+<div id="frmRecuperarContrasena">
+    <div class="row g-3">
+        <div class="col-lg-12">
+            <div class="row g-3">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <div class="card_Mdf">
+                        <div class="row g-3">
+                            <div class="col-lg-12">
+                                <label for="txtEmail" class="form-label">Email de Recuperación</label>
+                                <input type="email" style="width: 100%;" id="txtEmail" name="txtEmail" />
+                            </div>
+                            <div class="col-lg-12" style="text-align: center;width:100%;">
+                                <button id="btnRecuperar" type="button">Recuperar</button>
+                            </div>
+                            <div id="AlertEnvEmail"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

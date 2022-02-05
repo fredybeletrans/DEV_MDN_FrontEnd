@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Validar Correo del usuario";
+}
+<script src="~/js/VerificarMail.js"></script>
+<script type="text/javascript">
+    var xmytoken = '@ViewData["TOKEN"]';
+</script>
+<div class="row g-3">
+    <div class="col-lg-12">
+        <div class="row g-3">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="card_Mdf">
+                    <div class="row g-3">
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">¡Bien hecho!</h4>
+                            <p>leíste con éxito este importante mensaje. para poder acceder al portal haga clic en el boton para validar su cuenta de correo electronico.</p>
+                            <hr>
+                            <p class="mb-0">saludos !!!.</p>
+                        </div>
+                        <div class="col-lg-12" style="text-align: center;width:100%;">
+                            <button id="btnvalida" type="button" class="btn btn-primary" >haga clic para ir al login</button>
+                        </div>
+                        <div id="AlertValidEmail"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>

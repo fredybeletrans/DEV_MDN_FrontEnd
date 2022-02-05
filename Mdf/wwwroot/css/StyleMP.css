@@ -1,0 +1,39 @@
+﻿@media (min-width: 992px) {
+    .page-navs {
+        padding-right: 2rem;
+        padding-left: 2rem
+    }
+}
+
+
+.page-inner {
+    padding: 1.5rem 0
+}
+
+@media (min-width: 576px) {
+    .page-inner {
+        padding-right: 1rem;
+        padding-left: 1rem
+    }
+}
+
+@media (min-width: 992px) {
+    .page-inner {
+        padding-right: 2rem;
+        padding-left: 2rem
+    }
+}
+
+.page-inner-fill {
+    padding: 0;
+    height: calc(100% - 57px);
+    display: flex;
+    flex-direction: column
+}
+
+.page-divider {
+    height: 0;
+    margin: .3rem 0 1rem;
+    overflow: hidden;
+    border-top: 1px solid #ebecec
+}

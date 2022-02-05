@@ -1,0 +1,94 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Iniciar Sesion";
+}
+@using AspNetCore.ReCaptcha
+@using Microsoft.Extensions.Options
+@inject IOptions<ReCaptchaSettings> ReCaptchaSettings
+<p>@TempData["Message"]</p>
+<script src="~/js/LoginUsuarios.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render= @ViewData["ReCaptchaKey"]"></script>
+
+<style>
+    .text-center {
+        text-align: center;
+    }
+
+    .g-recaptcha {
+        display: inline-block;
+    }
+</style>
+<form id="frmLogin">
+    <div class="row g-3">
+        <div class="col-lg-12">
+            <div class="row g-3">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <div class="card_Mdf">
+                        <div class="row g-3">
+                            <div class="col-lg-12">
+                                <label for="txtUsuario" class="form-label">Usuario</label>
+                                <input type="text" style="width: 100%;" id="txtUsuario" name="txtUsuario" placeholder="Usuario">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="txtPassWordUsuario" class="form-label">Password</label>
+                                <input type="password" style="width: 100%;" id="txtPassWordUsuario" name="txtPassWordUsuario">
+                            </div>
+
+                            <div class="col-lg-12 text-center">
+
+                                @switch (ReCaptchaSettings.Value.Version)
+                                {
+                                    case ReCaptchaVersion.V2:
+                                        // Optionally override language of the recaptcha
+                                        // @Html.ReCaptcha(language: "en")
+                                        <div class="g-recaptcha" data-sitekey="@ViewData["ReCaptchaKey"]"></div>
+
+                                        break;
+                                    case ReCaptchaVersion.V2Invisible:
+                                        @Html.ReCaptcha("Submit Invisible ReCaptcha", className: "btn btn-primary", callback: "submitForm")
+                                        break;
+                                }
+
+
+                            </div>
+                            @if (ReCaptchaSettings.Value.Version != ReCaptchaVersion.V2Invisible)
+                            {
+
+
+                                <div class="col-lg-12" style="text-align: center;">
+                                    <button id="btnIngresar" type="button">Ingresar          </button>
+                                </div>
+
+
+                            }
+                            <div id="AlertUsuarioNoExiste"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+
+            </div>
+            <div class="row g-3">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <div class="row g-3">
+                        <div class="col-lg-6" style="text-align:initial;">
+                            <a style="text-decoration: none;color: white;" href="/RecuperarContrasena">Olvidó su contraseña?</a>
+
+                        </div>
+                        <div class="col-lg-6" style="text-align:end;">
+                            <a style="text-decoration: none;color: white;" href="/IngresarDatosComplementarios">Registrate</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
